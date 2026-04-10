@@ -1,12 +1,8 @@
-name: my-env
-description: Echo environment with rewards based on message length
-
-entrypoint: my_env.app:app
-
-tasks:
-  - name: easy
-    description: Send short meaningful message
-  - name: medium
-    description: Send medium length meaningful message
-  - name: hard
-    description: Send long meaningful message
+version: "1.0"
+name: "venky-space"
+type: "python"
+runtime: "3.10"
+# This MUST point to the app object inside your folder
+app: "my_env.app:app"
+port: 7860
+description: "OpenEnv Cloud Maintenance Simulator for Scaler-META Hackathon"
