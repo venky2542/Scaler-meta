@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-env"
+version = "0.1.0"
+description = "OpenEnv Hackathon Project"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "openenv-core",
+    "pydantic",
+    "requests"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.openenv]
+entrypoint = "my_env.app:app"
+
+[project.scripts]
+server = "server.app:main"
