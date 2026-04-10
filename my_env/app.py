@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from .env import MyEnv
-from .models import Action
+from my_env.env import MyEnv
+from my_env.models import Action
 
 app = FastAPI()
 
