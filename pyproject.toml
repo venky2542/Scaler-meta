@@ -1,33 +1,6 @@
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "scaler-meta-hackathon"
-version = "1.0.0"
-description = "Multi-mode deployment for OpenEnv Optimizer"
-readme = "README.md"
-requires-python = ">=3.10"
-authors = [
-    { name = "Maddi Venkata Teja" }
-]
-dependencies = [
-    "fastapi",
-    "uvicorn",
-    "openai",
-    "pydantic",
-    "psutil",
-    "requests",
-    "google-generativeai"
-]
+[tool.setuptools]
+packages = ["my_env"]
 
 [project.scripts]
-# This line is crucial for "multi-mode" validation
-openenv-start = "app:app"
-
-[tool.setuptools]
-py-modules = ["app", "inference"]
-
-[project.urls]
-# Some validators require the repository link to match
-repository = "https://github.com/venky2542/Scaler-meta"
+# This tells the server to look inside the 'my_env' folder for 'app.py'
+openenv-start = "my_env.app:app"
