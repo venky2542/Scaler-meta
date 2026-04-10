@@ -2,15 +2,24 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY . .
-
-# Install uv (required for OpenEnv)
+# 1. Install uv
 RUN pip install uv
 
-# Install project using uv (uses uv.lock properly)
-RUN uv pip install --system .
+# 2. Copy the configuration files first (best practice for caching)
+COPY pyproject.toml uv.lock ./
+
+# 3. Install dependencies exactly as defined in uv.lock
+# We use --system because we are inside a Docker container
+RUN uv pip install --system --frozen -r pyproject.toml
+
+# 4. Copy the rest of your code (including the my_env folder)
+COPY . .
+
+# 5. Set the PYTHONPATH so Python can see your 'my_env' folder
+ENV PYTHONPATH=/app
 
 EXPOSE 7860
 
-# Correct OpenEnv server entrypoint
-CMD ["python", "-m", "server.app"]
+# 6. Correct entrypoint for the "Multi-mode" requirement
+# IMPORTANT: Point to the 'app' object inside 'my_env/app.py'
+CMD ["uvicorn", "my_env.app:app", "--host", "0.0.0.0", "--port", "7860"]
