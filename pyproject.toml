@@ -1,6 +1,22 @@
+[project]
+name = "scaler-meta-hackathon"
+version = "0.1.0"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "openai",
+    "pydantic",
+    "psutil",
+    "requests",
+    "google-generativeai"
+]
+
+[project.scripts]
+openenv-start = "my_env.app:app"
+
 [tool.setuptools]
 packages = ["my_env"]
 
-[project.scripts]
-# This tells the server to look inside the 'my_env' folder for 'app.py'
-openenv-start = "my_env.app:app"
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
