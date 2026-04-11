@@ -15,8 +15,11 @@ RUN uv pip install --system --frozen -r pyproject.toml
 # 4. Copy the rest of your code (including the my_env folder)
 COPY . .
 
-# 5. Set the PYTHONPATH so Python can see your 'my_env' folder
-ENV PYTHONPATH=/app
+# Add this line before your CMD
+ENV PYTHONPATH="${PYTHONPATH}:/app"
+
+# Ensure your CMD points to the correct location
+CMD ["uvicorn", "my_env.app:app", "--host", "0.0.0.0", "--port", "7860"]
 
 EXPOSE 7860
 
