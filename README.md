@@ -1,3 +1,12 @@
+---
+title: Scaler Meta
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 # OpenEnv Project
 
 ## Description
