@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from my_env.env import MyEnv
-from my_env.models import Action
+from .env import MyEnv
+from .models import Action
 
 try:
     # This works when running from the root of the project (local/dev)
-    from my_env.env import MyEnv
-    from my_env.models import Action
+    from .env import MyEnv
+    from .models import Action
 except ImportError:
     # This works when the app is installed as a package or run from inside the folder
     from .env import MyEnv
