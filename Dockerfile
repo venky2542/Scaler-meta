@@ -10,7 +10,7 @@ COPY pyproject.toml uv.lock ./
 
 # 3. Install dependencies exactly as defined in uv.lock
 # We use --system because we are inside a Docker container
-RUN uv pip install --system --frozen -r pyproject.toml
+RUN uv pip install --system -r pyproject.toml
 
 # 4. Copy the rest of your code (including the my_env folder)
 COPY . .
